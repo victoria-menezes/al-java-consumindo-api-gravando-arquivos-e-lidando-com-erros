@@ -1,11 +1,16 @@
 package com.github.victoria_menezes.screenmatch.modelos;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Titulo implements Comparable<Titulo>{
     // Classe especifica o conteúdo de um objeto
     // Comparable<Titulo> : Comparável com outros títulos
 
     // private: define quais variáveis nao podem ser alteradas pelo usuário
+
+    @SerializedName("Title")
     private String nome;
+    @SerializedName("Year")
     private int anoLancamento;
     private int duracaoMinutos;
     private boolean incluidoPlano;
@@ -17,6 +22,12 @@ public class Titulo implements Comparable<Titulo>{
     public Titulo(String nome, int anoLancamento){
         this.nome = nome;
         this.anoLancamento = anoLancamento;
+    }
+
+    public Titulo(TituloOmdb myTituloOmdb) {
+        this.nome = myTituloOmdb.title();
+        this.anoLancamento = Integer.valueOf(myTituloOmdb.year());
+        this.duracaoMinutos = Integer.valueOf(myTituloOmdb.runtime().substring(0,3));
     }
 
 
@@ -73,5 +84,12 @@ public class Titulo implements Comparable<Titulo>{
     public int compareTo(Titulo outroTitulo) {
         return this.getNome().compareTo(outroTitulo.getNome()); // como fazer a comparacao
         // habilita o uso de Collections.sort(), etc
+    }
+
+    @Override
+    public String toString() {
+        return "nome='" + nome + '\'' +
+                ", anoLancamento=" + anoLancamento +
+                " duração=" + duracaoMinutos;
     }
 }

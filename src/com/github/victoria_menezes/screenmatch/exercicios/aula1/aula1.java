@@ -14,7 +14,6 @@ public class aula1 {
         String search = scanner.nextLine();
 
         search = search.replace(" ", "+");
-
         String APIKey = "KEY";
         String url = String.format("https://www.googleapis.com/books/v1/volumes?q=%s&key=%s", search, APIKey);
 

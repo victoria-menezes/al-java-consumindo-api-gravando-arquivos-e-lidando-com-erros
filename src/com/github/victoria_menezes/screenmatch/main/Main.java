@@ -19,7 +19,7 @@ public class Main {
         System.out.println("Film to search:");
 
         String search = scanner.nextLine();
-        String APIKey = "fb8364fd";
+        String APIKey = "KEY";
         String url = String.format("http://www.omdbapi.com/?t=%s&apikey=%s", search, APIKey);
 
         HttpClient client = HttpClient.newHttpClient();
